@@ -1,9 +1,9 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+// import ReactDOM from 'react-dom';
 import '../style/toggle.css';
 import { InputBox } from './formComponents';
 import Calculate from '../utils/calculate';
-import styled from 'styled-components';
+// import styled from 'styled-components';
 import { Checkbox } from 'pretty-checkbox-react';
 import '../style/styles.scss';
 import {
@@ -21,13 +21,13 @@ import getBaseUrl from '../utils/getBaseUrl';
 import { getData } from '../utils/api';
 
 export default function Calculator({ eatOutCarbs }) {
-  const [value, setValue] = React.useState(false);
+  //   const [value, setValue] = React.useState(false);
   const [unwell, setUnwell] = React.useState(false);
   const [exercise, setExercise] = React.useState(false);
   const [duration, setDuration] = React.useState(0);
   const [intensity, setIntensity] = React.useState(0);
-  const [period, setPeriod] = React.useState(false);
-  const [unitSwitch, setUnitSwitch] = React.useState(true);
+  //   const [period, setPeriod] = React.useState(false);
+  //   const [unitSwitch, setUnitSwitch] = React.useState(true);
 
   const [bloodGlucose, setBloodGlucose] = React.useState('');
   const [carbPortion, setCarbPortion] = React.useState(eatOutCarbs || '');
@@ -41,9 +41,9 @@ export default function Calculator({ eatOutCarbs }) {
   const handleExerciseChange = () => {
     setExercise(!exercise);
   };
-  const handlePeriodChange = () => {
-    setPeriod(!period);
-  };
+  //   const handlePeriodChange = () => {
+  //     setPeriod(!period);
+  //   };
 
   React.useEffect(() => {
     let token = window.localStorage.getItem('access_token');
