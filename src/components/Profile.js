@@ -1,5 +1,6 @@
 import React from 'react';
 import '../style/Profile.css';
+import getBaseUrl from '../utils/getBaseUrl.js';
 
 import Highcharts from 'highcharts';
 import highchartsMore from 'highcharts/highcharts-more';
@@ -11,7 +12,7 @@ export default function Profile({ setPage, navigate }) {
   const [data, setData] = React.useState([]);
 
   React.useEffect(() => {
-    getData('https://jalf.herokuapp.com/api/profile', {
+    getData(`${getBaseUrl()}/profile`, {
       method: 'GET',
       headers: {
         Authorization: 'Bearer ' + window.localStorage.getItem('access_token'),

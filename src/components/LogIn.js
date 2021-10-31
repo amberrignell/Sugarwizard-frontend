@@ -1,6 +1,7 @@
 import React from 'react';
 import { InputBox } from './formComponents';
 import { loginSubmit } from '../utils/api';
+import getBaseUrl from '../utils/getBaseUrl';
 import styled from 'styled-components';
 
 const Container = styled.form`
@@ -39,7 +40,7 @@ function LogIn({ setPage, navigate }) {
           value='Log In'
           onClick={(event) => {
             event.preventDefault();
-            loginSubmit(email, password, 'https://jalf.herokuapp.com/api/login')
+            loginSubmit(email, password, `${getBaseUrl()}/login`)
               .then((res) => {
                 localStorage.setItem('access_token', res.token);
                 window.location = '/home';

@@ -2,6 +2,7 @@ import React from 'react';
 import { InputBox } from './formComponents';
 
 import { signupSubmit, request } from '../utils/api';
+import getBaseUrl from '../utils/getBaseUrl';
 
 import styled from 'styled-components';
 import HomeButton from './HomeButton';
@@ -87,13 +88,7 @@ function SignUp({ setPage, navigate }) {
             value='Sign Up'
             onClick={(event) => {
               event.preventDefault();
-              signupSubmit(
-                email,
-                password,
-                insulinRatio,
-                carbRatio,
-                'https://jalf.herokuapp.com/api/signup',
-              )
+              signupSubmit(email, password, insulinRatio, carbRatio, `${getBaseUrl()}/signup`)
                 .then((res) => {
                   window.localStorage.setItem('access_token', res.token);
                   window.location = '/home';
