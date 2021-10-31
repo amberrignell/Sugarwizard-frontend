@@ -42,7 +42,6 @@ const Container = styled.div`
 function SignUp({ setPage, navigate }) {
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
-  //   const [confirmPassword, setConfirmPassword] = React.useState('');
   const [insulinRatio, setInsulinRatio] = React.useState('');
   const [carbRatio, setCarbRatio] = React.useState('');
 
@@ -65,11 +64,6 @@ function SignUp({ setPage, navigate }) {
             label='password'
             setStateFunction={setPassword}
           />
-          {/* <InputBox
-            type='password'
-            label='confirm password'
-            setStateFunction={setConfirmPassword}
-          /> */}
           <RatioContainer>
             <InputBox
               className='signup-input'
