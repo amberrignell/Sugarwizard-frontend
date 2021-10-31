@@ -14,7 +14,7 @@ import {
   EntriesButton,
   Img,
 } from '../styledComponents/calculator';
-import Doctor from './doctor.png';
+import Doctor from '../images/doctor.png';
 import HomeButton from './HomeButton';
 import addData from '../utils/addData';
 import getBaseUrl from '../utils/getBaseUrl';
@@ -34,6 +34,7 @@ export default function Calculator({ eatOutCarbs }) {
   const [insulinRatio, setInsulinRatio] = React.useState('');
   const [carbRatio, setCarbRatio] = React.useState('');
   const [result, setResult] = React.useState('');
+  const [isLoggedIn, setIsLoggedIn] = React.useState(false);
 
   const handleUnwellChange = () => {
     setUnwell(!unwell);
@@ -55,6 +56,7 @@ export default function Calculator({ eatOutCarbs }) {
         },
       }).then((res) => {
         window.localStorage.setItem('response', res.data.insulinRatio);
+        setIsLoggedIn(true);
         setInsulinRatio(res.data.insulinRatio);
         setCarbRatio(res.data.carbRatio);
       });
@@ -149,14 +151,16 @@ export default function Calculator({ eatOutCarbs }) {
         >
           Calculate!
         </Button>
-        <EntriesButton
-          onClick={() => {
-            const token = window.localStorage.getItem('access_token');
-            addData(token, bloodGlucose);
-          }}
-        >
-          Store these entries
-        </EntriesButton>
+        {isLoggedIn ? (
+          <EntriesButton
+            onClick={() => {
+              const token = window.localStorage.getItem('access_token');
+              addData(token, bloodGlucose);
+            }}
+          >
+            Store these entries
+          </EntriesButton>
+        ) : null}
 
         {result ? <output>{result}</output> : null}
       </CalculatorContainer>

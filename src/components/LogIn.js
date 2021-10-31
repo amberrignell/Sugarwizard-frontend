@@ -1,6 +1,7 @@
 import React from 'react';
 import { InputBox } from './formComponents';
 import { loginSubmit } from '../utils/api';
+import BackButton from './BackButton';
 import getBaseUrl from '../utils/getBaseUrl';
 import styled from 'styled-components';
 
@@ -31,26 +32,34 @@ function LogIn({ setPage, navigate }) {
   const [password, setPassword] = React.useState('');
 
   return (
-    <Container>
-      <InputBox type='email' label='email' placeholder='hi@there.com' setStateFunction={setEmail} />
-      <InputBox type='password' label='password' setStateFunction={setPassword} />
-      <form>
-        <LogInButton
-          type='submit'
-          value='Log In'
-          onClick={(event) => {
-            event.preventDefault();
-            loginSubmit(email, password, `${getBaseUrl()}/login`)
-              .then((res) => {
-                localStorage.setItem('access_token', res.token);
-                window.location = '/home';
-                navigate();
-              })
-              .catch((err) => console.log(err));
-          }}
-        ></LogInButton>
-      </form>
-    </Container>
+    <>
+      <BackButton />
+      <Container>
+        <InputBox
+          type='email'
+          label='email'
+          placeholder='hi@there.com'
+          setStateFunction={setEmail}
+        />
+        <InputBox type='password' label='password' setStateFunction={setPassword} />
+        <form>
+          <LogInButton
+            type='submit'
+            value='Log In'
+            onClick={(event) => {
+              event.preventDefault();
+              loginSubmit(email, password, `${getBaseUrl()}/login`)
+                .then((res) => {
+                  localStorage.setItem('access_token', res.token);
+                  window.location = '/home';
+                  navigate();
+                })
+                .catch((err) => console.log(err));
+            }}
+          ></LogInButton>
+        </form>
+      </Container>
+    </>
   );
 }
 

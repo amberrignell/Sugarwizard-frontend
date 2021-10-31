@@ -1,5 +1,5 @@
 import React from 'react';
-import Home from '../images/home.png';
+import BackButton from '../images/backButton.png';
 import styled from 'styled-components';
 
 export const Button = styled.button`
@@ -15,17 +15,17 @@ const Img = styled.img`
   height: 4rem;
 `;
 
-export default function HomeButton({ setPage, navigate }) {
+export default function backButton({ setPage, navigate }) {
   return (
     <Button
-      id='home'
+      id='backButton'
       onClick={(event) => {
         event.preventDefault();
-        window.location = '/home';
+        window.location = '/';
         navigate();
       }}
     >
-      <Img src={Home} />
+      <Img src={BackButton} />
     </Button>
   );
 }

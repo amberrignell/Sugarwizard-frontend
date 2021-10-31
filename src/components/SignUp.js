@@ -1,11 +1,11 @@
 import React from 'react';
 import { InputBox } from './formComponents';
+import BackButton from './BackButton';
 
 import { signupSubmit } from '../utils/api';
 import getBaseUrl from '../utils/getBaseUrl';
 
 import styled from 'styled-components';
-// import HomeButton from './HomeButton';
 // import { Input } from '../styledComponents/calculator';
 
 const RatioContainer = styled.div`
@@ -48,6 +48,7 @@ function SignUp({ setPage, navigate }) {
 
   return (
     <>
+      <BackButton />
       <Container>
         <form>
           <InputBox
