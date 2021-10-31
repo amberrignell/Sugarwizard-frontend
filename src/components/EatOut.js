@@ -77,13 +77,6 @@ const ListItem = styled.li`
   font-size: 1.2rem;
 `;
 
-// const BulletPoint = styled.li`
-//   background-image: src='https://www.freeiconspng.com/uploads/yellow-star-icon-21.png';
-//   background-position: 0 0;
-//   background-size: 1.6rem 1.6rem;
-//   background-repeat: no-repeat;
-// `;
-
 function EatOut({ setPage, navigate, eatOutCarbs, setEatOutCarbs }) {
   const categories = data.map((x) => x.category.category); // remove all fluff apart from categories
 
@@ -95,7 +88,6 @@ function EatOut({ setPage, navigate, eatOutCarbs, setEatOutCarbs }) {
   const uniqueCategories = categories.filter(onlyUnique);
 
   const [category, setCategory] = React.useState('Soups');
-  //   const [totalCarbs, setTotalCarbs] = React.useState(0);
   const [addedItems, setAddedItems] = React.useState([]);
 
   return (
@@ -170,7 +162,6 @@ function EatOut({ setPage, navigate, eatOutCarbs, setEatOutCarbs }) {
                 })}
               </List>
             </div>
-            {/* {addedItems ? <ul>{[...addedItems]}</ul> : null} */}
             <P>Total Carbs: </P>
             <P id='total'>{eatOutCarbs}g</P>
             <CalculatorLink href='/calculator' onClick={navigate}>
@@ -182,11 +173,5 @@ function EatOut({ setPage, navigate, eatOutCarbs, setEatOutCarbs }) {
     </Border>
   );
 }
-
-// function AddToCalculator() {
-//   const [calculate, setCalculate] = React.useState('');
-//   // const element = <p>Total Carbs</p>;
-//   // ReactDOM.render(element, document.getElementById('total'));
-// }
 
 export default EatOut;

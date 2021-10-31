@@ -9,10 +9,6 @@ export function InputBox({ label, placeholder, setStateFunction, state, type, in
     setStateFunction(event.target.value);
   };
 
-  // React.useEffect(() => {
-
-  // })
-
   return (
     <div className='input-container'>
       <label htmlFor={label}>{label}</label>

@@ -6,7 +6,6 @@ import { signupSubmit } from '../utils/api';
 import getBaseUrl from '../utils/getBaseUrl';
 
 import styled from 'styled-components';
-// import { Input } from '../styledComponents/calculator';
 
 const RatioContainer = styled.div`
   display: flex;
