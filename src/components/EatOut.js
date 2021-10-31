@@ -95,7 +95,7 @@ function EatOut({ setPage, navigate, eatOutCarbs, setEatOutCarbs }) {
   const uniqueCategories = categories.filter(onlyUnique);
 
   const [category, setCategory] = React.useState('Soups');
-  const [totalCarbs, setTotalCarbs] = React.useState(0);
+  //   const [totalCarbs, setTotalCarbs] = React.useState(0);
   const [addedItems, setAddedItems] = React.useState([]);
 
   return (
@@ -183,10 +183,10 @@ function EatOut({ setPage, navigate, eatOutCarbs, setEatOutCarbs }) {
   );
 }
 
-function AddToCalculator() {
-  const [calculate, setCalculate] = React.useState('');
-  // const element = <p>Total Carbs</p>;
-  // ReactDOM.render(element, document.getElementById('total'));
-}
+// function AddToCalculator() {
+//   const [calculate, setCalculate] = React.useState('');
+//   // const element = <p>Total Carbs</p>;
+//   // ReactDOM.render(element, document.getElementById('total'));
+// }
 
 export default EatOut;

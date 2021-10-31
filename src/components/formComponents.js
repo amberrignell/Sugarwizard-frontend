@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Input } from '../styledComponents/calculator';
 
 export function InputBox({ label, placeholder, setStateFunction, state, type, initialValue }) {
