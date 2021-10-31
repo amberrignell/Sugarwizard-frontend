@@ -3,6 +3,7 @@ import React from 'react';
 import '../style/toggle.css';
 import { InputBox } from './formComponents';
 import Calculate from '../utils/calculate';
+import BackButton from './BackButton';
 // import styled from 'styled-components';
 import { Checkbox } from 'pretty-checkbox-react';
 import '../style/styles.scss';
@@ -66,7 +67,7 @@ export default function Calculator({ eatOutCarbs }) {
   return (
     <>
       {/* <Switch isOn={unitSwitch} handleToggle={() => setUnitSwitch(!unitSwitch)} /> */}
-      <HomeButton />
+      {isLoggedIn ? <HomeButton /> : <BackButton />}
       <CalculatorContainer>
         <Img src={Doctor} />
         <InputBox
