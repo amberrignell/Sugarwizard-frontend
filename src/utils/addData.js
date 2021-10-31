@@ -1,9 +1,11 @@
+import getBaseUrl from './getBaseUrl';
+
 function addData(token, glucose_reading) {
   let d = new Date();
   let time = d.getTime();
   let data = { glucose_reading, time };
   console.log(data);
-  fetch('https://jalf.herokuapp.com/api/store-data', {
+  fetch(`${getBaseUrl()}/store-data`, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',

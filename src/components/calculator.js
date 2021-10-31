@@ -17,6 +17,7 @@ import {
 import Doctor from './doctor.png';
 import HomeButton from './HomeButton';
 import addData from '../utils/addData';
+import getBaseUrl from '../utils/getBaseUrl';
 import { getData } from '../utils/api';
 
 export default function Calculator({ eatOutCarbs }) {
@@ -47,7 +48,7 @@ export default function Calculator({ eatOutCarbs }) {
   React.useEffect(() => {
     let token = window.localStorage.getItem('access_token');
     if (token) {
-      getData('https://jalf.herokuapp.com/api/profile', {
+      getData(`${getBaseUrl()}/profile`, {
         method: 'GET',
         headers: {
           Authorization: 'Bearer ' + token,
