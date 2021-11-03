@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import Doctor from './doctor.png';
+import Doctor from '../images/doctor.png';
 import '../style/Home.css';
 
 const HomeLink = styled.a`

@@ -44,11 +44,11 @@ function Landing({ setPage, navigate }) {
       <Nav>
         <Title>Welcome to Sugar Wizard!</Title>
         <Subtitle>Crunch numbers not sugar!</Subtitle>
-        <LandingLink href='/login' onClick={navigate}>
-          Log in
-        </LandingLink>
         <LandingLink href='/signup' onClick={navigate}>
           Sign up
+        </LandingLink>
+        <LandingLink href='/login' onClick={navigate}>
+          Log in
         </LandingLink>
         <LandingLink href='/calculator' onClick={navigate}>
           Calculate

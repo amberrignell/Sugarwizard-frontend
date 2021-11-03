@@ -1,12 +1,11 @@
 import React from 'react';
 import { InputBox } from './formComponents';
+import BackButton from './BackButton';
 
 import { signupSubmit } from '../utils/api';
 import getBaseUrl from '../utils/getBaseUrl';
 
 import styled from 'styled-components';
-// import HomeButton from './HomeButton';
-// import { Input } from '../styledComponents/calculator';
 
 const RatioContainer = styled.div`
   display: flex;
@@ -42,12 +41,12 @@ const Container = styled.div`
 function SignUp({ setPage, navigate }) {
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
-  //   const [confirmPassword, setConfirmPassword] = React.useState('');
   const [insulinRatio, setInsulinRatio] = React.useState('');
   const [carbRatio, setCarbRatio] = React.useState('');
 
   return (
     <>
+      <BackButton />
       <Container>
         <form>
           <InputBox
@@ -64,11 +63,6 @@ function SignUp({ setPage, navigate }) {
             label='password'
             setStateFunction={setPassword}
           />
-          {/* <InputBox
-            type='password'
-            label='confirm password'
-            setStateFunction={setConfirmPassword}
-          /> */}
           <RatioContainer>
             <InputBox
               className='signup-input'

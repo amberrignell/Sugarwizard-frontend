@@ -1,9 +1,8 @@
 import React from 'react';
-// import ReactDOM from 'react-dom';
 import '../style/toggle.css';
 import { InputBox } from './formComponents';
 import Calculate from '../utils/calculate';
-// import styled from 'styled-components';
+import BackButton from './BackButton';
 import { Checkbox } from 'pretty-checkbox-react';
 import '../style/styles.scss';
 import {
@@ -14,26 +13,24 @@ import {
   EntriesButton,
   Img,
 } from '../styledComponents/calculator';
-import Doctor from './doctor.png';
+import Doctor from '../images/doctor.png';
 import HomeButton from './HomeButton';
 import addData from '../utils/addData';
 import getBaseUrl from '../utils/getBaseUrl';
 import { getData } from '../utils/api';
 
 export default function Calculator({ eatOutCarbs }) {
-  //   const [value, setValue] = React.useState(false);
   const [unwell, setUnwell] = React.useState(false);
   const [exercise, setExercise] = React.useState(false);
   const [duration, setDuration] = React.useState(0);
   const [intensity, setIntensity] = React.useState(0);
-  //   const [period, setPeriod] = React.useState(false);
-  //   const [unitSwitch, setUnitSwitch] = React.useState(true);
 
   const [bloodGlucose, setBloodGlucose] = React.useState('');
   const [carbPortion, setCarbPortion] = React.useState(eatOutCarbs || '');
   const [insulinRatio, setInsulinRatio] = React.useState('');
   const [carbRatio, setCarbRatio] = React.useState('');
   const [result, setResult] = React.useState('');
+  const [isLoggedIn, setIsLoggedIn] = React.useState(false);
 
   const handleUnwellChange = () => {
     setUnwell(!unwell);
@@ -41,9 +38,6 @@ export default function Calculator({ eatOutCarbs }) {
   const handleExerciseChange = () => {
     setExercise(!exercise);
   };
-  //   const handlePeriodChange = () => {
-  //     setPeriod(!period);
-  //   };
 
   React.useEffect(() => {
     let token = window.localStorage.getItem('access_token');
@@ -55,6 +49,7 @@ export default function Calculator({ eatOutCarbs }) {
         },
       }).then((res) => {
         window.localStorage.setItem('response', res.data.insulinRatio);
+        setIsLoggedIn(true);
         setInsulinRatio(res.data.insulinRatio);
         setCarbRatio(res.data.carbRatio);
       });
@@ -63,8 +58,7 @@ export default function Calculator({ eatOutCarbs }) {
 
   return (
     <>
-      {/* <Switch isOn={unitSwitch} handleToggle={() => setUnitSwitch(!unitSwitch)} /> */}
-      <HomeButton />
+      {isLoggedIn ? <HomeButton /> : <BackButton />}
       <CalculatorContainer>
         <Img src={Doctor} />
         <InputBox
@@ -149,14 +143,16 @@ export default function Calculator({ eatOutCarbs }) {
         >
           Calculate!
         </Button>
-        <EntriesButton
-          onClick={() => {
-            const token = window.localStorage.getItem('access_token');
-            addData(token, bloodGlucose);
-          }}
-        >
-          Store these entries
-        </EntriesButton>
+        {isLoggedIn ? (
+          <EntriesButton
+            onClick={() => {
+              const token = window.localStorage.getItem('access_token');
+              addData(token, bloodGlucose);
+            }}
+          >
+            Store these entries
+          </EntriesButton>
+        ) : null}
 
         {result ? <output>{result}</output> : null}
       </CalculatorContainer>
